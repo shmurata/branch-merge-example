@@ -2,12 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: alpine/git:1.0.4
     steps:
       - checkout
       - run:
           name: Greeting
           command: echo Hello, world.
       - run:
-          name: Print the Current Time
-          command: date
+          name: Print remote branches
+          command: git branch --list -r
