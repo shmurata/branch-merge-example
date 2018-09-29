@@ -4,6 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     run: mattermost
+    app: mattermost
   name: mattermost
 spec:
   replicas: 1
