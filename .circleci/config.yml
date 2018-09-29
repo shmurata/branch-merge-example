@@ -2,12 +2,15 @@ version: 2
 jobs:
   build:
     docker:
-      - image: alpine/git:1.0.4
+      - image: debian:stretch
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: setup
+          command: |
+            apt-get update -qy && apt-get install -qy git
+            mkdir ~/.ssh
+            echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
       - run:
-          name: Print remote branches
-          command: git branch --list -r
+          name: auto merge
+          command: scripts/auto-merge.sh
