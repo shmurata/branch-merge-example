@@ -21,5 +21,7 @@ spec:
       containers:
       - image: mattermost
         name: mattermost
-        resources: {}
+        resources:
+          request:
+            cpu: 100m
 status: {}
